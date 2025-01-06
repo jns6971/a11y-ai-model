@@ -1,6 +1,9 @@
 import * as tf from '@tensorflow/tfjs-node';
 import { processedData } from './dataPreparation.js';
 
+// Set the backend to 'tensorflow' for Node.js environment
+tf.setBackend('tensorflow');
+
 /**
  * Creates a simple neural network model for accessibility analysis.
  * @param {Array} inputShape - Shape of the input data.
@@ -15,8 +18,13 @@ function createModel(inputShape) {
   return model;
 }
 
-const X = tf.tensor2d(processedData.map(d => Object.values(d)));
-const y = tf.tensor2d(processedData.map(d => [d.isAccessible ? 1 : 0]));
+// Extract input features and labels
+const inputFeatures = processedData.map(d => [d.contrastRatio, d.hasAltText]);
+const labels = processedData.map(d => [d.isAccessible ? 1 : 0]);
+
+// Create tensors
+const X = tf.tensor2d(inputFeatures, [inputFeatures.length, inputFeatures[0].length]);
+const y = tf.tensor2d(labels, [labels.length, 1]);
 
 const model = createModel([X.shape[1]]);
 

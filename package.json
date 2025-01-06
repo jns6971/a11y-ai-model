@@ -22,7 +22,9 @@
   "dependencies": {
     "@tensorflow/tfjs": "^4.22.0",
     "@tensorflow/tfjs-converter": "^4.22.0",
-    "express": "^4.21.2"
+    "@tensorflow/tfjs-node": "^4.22.0",
+    "express": "^4.21.2",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",

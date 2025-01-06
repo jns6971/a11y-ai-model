@@ -4,7 +4,7 @@ import * as tf from '@tensorflow/tfjs-node';
  * Loads the trained model for inference.
  * @returns {Promise<tf.LayersModel>} - The loaded model.
  */
-async function loadModel() {
+export async function loadModel() {
   const model = await tf.loadLayersModel('file://../model/model.json');
   return model;
 }
@@ -15,7 +15,7 @@ async function loadModel() {
  * @param {tf.LayersModel} model - The trained model.
  * @returns {tf.Tensor} - The prediction result.
  */
-async function predictAccessibility(inputData, model) {
+export async function predictAccessibility(inputData, model) {
   return model.predict(inputData);
 }
 

@@ -1,15 +1,14 @@
-import _ from 'lodash';
+import { rawData } from './../data/webAccessibilityData.js';
 
-let rawData = [...]; // Placeholder for your data
+console.log('rawData:', rawData);
 
-/**
- * Processes raw data to extract and transform necessary fields.
- * @param {Array} rawData - Array of objects containing raw data.
- * @returns {Array} processedData - Array of objects with processed data.
- */
-let processedData = rawData.map(item => ({
+// Use rawData here
+const processedData = rawData.map(item => ({
   contrastRatio: parseFloat(item.contrastRatio),
   hasAltText: !!item.altText,
+  // ... other transformations based on your raw data structure
 }));
+
+console.log('processedData:', processedData);
 
 export { processedData };
